@@ -8,7 +8,7 @@
         "-fdiagnostics-color=always",
         "-g",
         "${workspaceFolder}/src/*.c", 
-        "${workspaceFolder}/src/telaInicial/*.c",
+        "${workspaceFolder}/src/welcomScreen/*.c",
         "-o",
         "${workspaceFolder}/bin/bank_app",
         "-I",
