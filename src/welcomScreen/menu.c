@@ -20,11 +20,7 @@ void menu()
   header();
 
   ul(options,sizeof(options) / sizeof(options[0]) );
-
-
-  /* puts("\t\t[1] User");
-  puts("\t\t[2] Payments and Othes...");
-  puts("\t\t[0] Logout"); */
+  
   puts("");
   puts("");
   puts("");
