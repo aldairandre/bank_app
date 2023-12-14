@@ -9,7 +9,7 @@
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${workspaceFolder}/bin/banking_App"
       ],
       "options": {
         "cwd": "${fileDirname}"
