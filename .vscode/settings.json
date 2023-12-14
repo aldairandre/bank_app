@@ -1,6 +1,3 @@
 {
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "stdio.h": "c"
-  }
+  "cmake.configureOnOpen": true
 }
