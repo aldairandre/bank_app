@@ -62,10 +62,15 @@ Usuario usuario;
 int escolha_Do_Usuario = 0;
 
 // Declaracão dos procedimentos e Funcoes
+void tela_Inicial(void);
 void menu(Opcoes *opcoes);
+void substituir_primeira_linha(const char *arquivo_original, char *conteudo_novo, const char *novo_nome_arquivo);
+int procurar_arquivo(const char *diretorio, const char *nome_arquivo);
+Usuario criarUsuario();
+UsuarioConsulta editarUsuario();
+int apagarUsuario(char *nomeAntigo, char *caminho_para_salvar_arq);
 void userInput(int escolha_do_usuario);
 void trabalhando_na_funcionalidade(void);
-void tela_Inicial(void);
 void copy_right(void);
 void logotipo_Do_Banco(void);
 void lista_De_Opcoes(Opcoes *opcoes, int tamanho_Das_Opcoes);
@@ -110,9 +115,9 @@ label1:
     system("clear");
     sleep(2);
     printf("\nErro: As opções vão de 0 a 3.\n");
-    /*  printf("Pressiona qualquer tecla para continuar... \n");
-     getchar();
-     goto label1; */
+    printf("Pressiona qualquer tecla para continuar... \n");
+    getchar();
+    goto label1;
     break;
   }
 }
@@ -289,16 +294,21 @@ UsuarioConsulta editarUsuario()
   return usuario;
 }
 
-Usuario apagarUsuario()
+int apagarUsuario(char *nomeAntigo, char *caminho_para_salvar_arq)
 {
-  char nome[60];
-  int numeroDeConta;
-  int iban;
-  Usuario usuario;
-  puts("Nome Completo: ");
-  scanf("%s", nome);
+  // Verifica se o diretório existe
+  if (procurar_arquivo(caminho_para_salvar_arq, nomeAntigo) == -1)
+  {
+    return -1;
+  }
 
-  return usuario;
+  // Exclui o arquivo do usuário
+  if (remove(caminho_para_salvar_arq) == -1)
+  {
+    return -1;
+  }
+
+  return 0;
 }
 
 // Funcao que valida escolha do usuario
@@ -407,7 +417,7 @@ void userInput(int escolha_do_usuario)
       tela_Inicial();
     }
   }
-  else if (escolha_do_usuario == 3) 
+  else if (escolha_do_usuario == 3)
   {
 
     // Chama o menu de escolhas para o Movimentos
@@ -454,7 +464,12 @@ void userInput(int escolha_do_usuario)
     copy_right();
   }
   else
+  {
     printf("\n>> Unexpected Error occured. Report to program Administrator << \n");
+    sleep(3);
+    system("clear");
+     copy_right();
+  }
 }
 
 // Funcão responsavel por exibir os elementos da estrutura de dados presentes na lista
