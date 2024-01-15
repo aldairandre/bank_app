@@ -64,10 +64,11 @@ int escolha_Do_Usuario = 0;
 // Declaracão dos procedimentos e Funcoes
 void menu(Opcoes *opcoes);
 void userInput(int escolha_do_usuario);
+void trabalhando_na_funcionalidade(void);
 void tela_Inicial(void);
+void copy_right(void);
 void logotipo_Do_Banco(void);
 void lista_De_Opcoes(Opcoes *opcoes, int tamanho_Das_Opcoes);
-void trabalhando_na_funcionalidade(void);
 
 // Incio do nosso programa
 int main(int argc, char const *argv[])
@@ -398,12 +399,15 @@ void userInput(int escolha_do_usuario)
     }
     else
     {
+      system("clear");
+      logotipo_Do_Banco();
       puts("\t\tESCOLHA INVALIDA");
+      sleep(3);
       system("clear");
       tela_Inicial();
     }
   }
-  else if (escolha_do_usuario == 3)
+  else if (escolha_do_usuario == 3) 
   {
 
     // Chama o menu de escolhas para o Movimentos
@@ -412,7 +416,7 @@ void userInput(int escolha_do_usuario)
     scanf("%d", &escolha_Do_Usuario);
 
     if (escolha_Do_Usuario == 0)
-    {3
+    {
       system("clear");
       sleep(1);
       tela_Inicial();
@@ -424,14 +428,14 @@ void userInput(int escolha_do_usuario)
       sleep(1);
       tela_Inicial();
     }
-     else if (escolha_Do_Usuario == 2)
+    else if (escolha_Do_Usuario == 2)
     {
       trabalhando_na_funcionalidade();
       system("clear");
       sleep(1);
       tela_Inicial();
     }
-     else if (escolha_Do_Usuario == 3)
+    else if (escolha_Do_Usuario == 3)
     {
       trabalhando_na_funcionalidade();
       system("clear");
@@ -447,8 +451,7 @@ void userInput(int escolha_do_usuario)
   }
   else if (escolha_do_usuario == 0)
   {
-
-    exit(0);
+    copy_right();
   }
   else
     printf("\n>> Unexpected Error occured. Report to program Administrator << \n");
@@ -468,6 +471,28 @@ void trabalhando_na_funcionalidade()
 {
   printf("\t\tEsta funcionalidade esta em Desenvolvimento\n\n");
   sleep(5);
+}
+
+void copy_right()
+{
+  system("clear");
+  logotipo_Do_Banco();
+  puts("\t\tObrigado por usar o nosso App");
+  puts("");
+  puts("");
+  sleep(3);
+  system("clear");
+  logotipo_Do_Banco();
+  puts("\t\tAutores");
+  puts("");
+  puts("\t\tAldair Dos Santos André");
+  puts("\t\tDébora Mutaleno Mónica Félix");
+  puts("\t\tGeovani Leonel Donga Muanha");
+  puts("");
+  puts("\t\tRepositorio Github: https://github.com/aldairandre/banking_app");
+  puts("");
+  puts("");
+  exit(0);
 }
 
 // Função responsavel por mostra o logo do banco
